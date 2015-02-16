@@ -1,0 +1,100 @@
+defaultTasks 'build'
+
+buildscript {
+  repositories {
+    jcenter()
+  }
+  dependencies {
+    classpath "nl.javadude.gradle.plugins:license-gradle-plugin:0.11.0"
+  }
+}
+
+apply plugin: "com.github.hierynomus.license"
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+apply plugin: 'maven'
+
+group = 'com.xebialabs.deployit.community'
+sourceCompatibility = 1.6
+targetCompatibility = 1.6
+version = '4.0.5'
+def apiVersion = '4.0.1'
+def xldeployHome = "$System.env.XLDEPLOY_HOME"
+
+repositories {
+  mavenLocal()
+  mavenCentral()
+  maven {
+      credentials {
+            username 'community-plugins'
+            password 'community'
+        }
+      url 'http://nexus.xebialabs.com/nexus/content/repositories/releases'
+    }
+}
+
+configurations {
+  compile {
+    transitive = false
+  }
+  //itestCompile { extendsFrom testCompile }
+  //  itestRuntime { extendsFrom itestCompile, testRuntime }
+}
+
+dependencies {
+  //compile deployit_jee_plugin
+  //compile deployit_database_plugin
+  //compile 'org.cloudfoundry:cloudfoundry-client-lib:1.0.3'
+  //compile 'org.springframework.security.oauth:spring-security-oauth2:1.0.5.RELEASE'
+
+  //itestCompile fileTree(dir: "$xldeployHome/lib", include: ['*.jar'])
+}
+
+sourceSets {
+        itest {
+            java {
+                srcDirs = ['src/test/itest']
+            }
+            //compileClasspath = sourceSets.main.output + configurations.testCompile + configurations.itestCompile
+            //runtimeClasspath = sourceSets.itest.output + configurations.itestCompile + sourceSets.main.output + configurations.itestRuntime
+        }
+}
+
+import org.apache.tools.ant.filters.*
+ 
+processResources {
+    filter ReplaceTokens, tokens: [
+        "project.version": project.property("version"),
+        "project.artifactId": project.property("name")
+    ]
+}
+
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allSource
+    classifier = 'sources'
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = "javadoc"
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives sourcesJar, javadocJar
+}
+
+license {
+    header rootProject.file('src/main/license/xebialabs_community.license')
+    strictCheck false
+}
+
+task itest(dependsOn: 'itestClasses',type: Test) {
+        testClassesDir = sourceSets.itest.output.classesDir
+        classpath = sourceSets.itest.runtimeClasspath
+}  
+
+itest.configure {
+        useJUnit() {
+        }
+}   
