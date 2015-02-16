@@ -1,0 +1,41 @@
+<!--
+THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS
+FOR A PARTICULAR PURPOSE. THIS CODE AND INFORMATION ARE NOT SUPPORTED BY XEBIALABS.
+-->
+<?xml version="1.0" encoding="UTF-8"?>
+<synthetic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://www.xebialabs.com/deployit/synthetic"
+           xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd">
+
+    <type type="file.CopiedUnixArtifact" extends="generic.ExecutedScriptWithDerivedArtifact" container-type="overthere.SshHost" virtual="true">
+      <!-- cannot define regex validation rules for integers -->
+      <property name="permissions" required="false" description="If set, the UNIX file permissions to be applied to the artifact, e.g. 644">
+        <rule type="regex" pattern="[0-7]{3}"/>
+      </property>
+      <property name="targetPath" />
+      <property name="createTargetPath" kind="boolean" required="false" default="false" />
+      <!-- admin properties -->
+      <property name="destroyVerb" hidden="true" default="Delete" />
+    </type>
+
+    <type type="file.CopiedUnixFile" extends="file.CopiedUnixArtifact" deployable-type="file.UnixFile">
+      <generate-deployable type="file.UnixFile" extends="file.File" />
+
+      <property name="targetFileName" required="false" />
+      <!-- admin properties -->
+      <property name="targetPathShared" kind="boolean" required="false" hidden="true" default="false" />
+      <property name="createScript" hidden="true" default="file/create-unix-file.sh.ftl" />
+      <property name="destroyScript" hidden="true" default="file/destroy-unix-file.sh.ftl" />
+    </type>
+
+    <type type="file.CopiedUnixFolder" extends="file.CopiedUnixArtifact" deployable-type="file.UnixFolder">
+      <generate-deployable type="file.UnixFolder" extends="file.Folder" />
+
+      <property name="targetPathShared" kind="boolean" required="false" default="true" />
+      <!-- admin properties -->
+      <property name="targetFileName" hidden="true" default="UNUSED" />
+      <property name="createScript" hidden="true" default="file/create-unix-folder.sh.ftl" />
+      <property name="destroyScript" hidden="true" default="file/destroy-unix-folder.sh.ftl" />
+    </type>
+</synthetic>
