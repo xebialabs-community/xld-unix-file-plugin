@@ -2,11 +2,11 @@ language: java
 notifications:
   hipchat:
     rooms:
-      secure: BRxyikZ3/l8yGg63JU/oa7YETcMUhcHXQHFf4EF7kdD4hSgqhmHHlCMjDFcx84rTTf1CrcpiKVJfn1LPFADKr3QMEaatx9nWCPs1iHbZBfRhUJPVaG/1kN0cVyU5vz0v2KY2hx5FTnoecvL6ihdhpnWoWPZZxfDGT7t6uhAElbg=
+      secure:  03d4e44685ecd61331cd8bacc1f0b7588c7dd10c
 deploy:
   provider: releases
   api_key:
-    secure: HWP5140Mig3cgoOhRmj7cMWcgGURQOdt7Toc9QJdxTlC6wsEt64sNpx6XBFLovm2RkF57aETpOHQOGlGvy77Pf5UNcGscpAxqg6uealEkiTcatQ+H6m+XjN+lQTViqOESx8Id3h+0Dfcr4pc8oKY2xtzruak/oTMJ37OqUr+qIo=
+    secure:   03d4e44685ecd61331cd8bacc1f0b7588c7dd10c
   file: build/libs/unix-file-plugin-4.0.5.jar
   skip_cleanup: true
   on:
