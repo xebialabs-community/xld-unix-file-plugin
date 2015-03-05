@@ -18,8 +18,8 @@ apply plugin: 'maven'
 group = 'com.xebialabs.deployit.community'
 sourceCompatibility = 1.6
 targetCompatibility = 1.6
-version = '4.0.6'
-def apiVersion = '4.0.2'
+version = '4.0.7'
+def apiVersion = '4.0.7'
 def xldeployHome = "$System.env.XLDEPLOY_HOME"
 
 repositories {
