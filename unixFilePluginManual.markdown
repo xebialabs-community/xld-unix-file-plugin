@@ -28,7 +28,7 @@ This plugin requires:
 
 ## Usage in Deployment Packages
 
-Please refer to  [Packaging Manual](ttps://docs.xebialabs.com/xl-deploy/4.5.x/packagingmanual.html) for more details about the DAR packaging format.
+Please refer to  [Packaging Manual](https://docs.xebialabs.com/xl-deploy/4.5.x/packagingmanual.html) for more details about the DAR packaging format.
 
 Sample DAR manifest entries defining a file, folder, and archive resource:
 

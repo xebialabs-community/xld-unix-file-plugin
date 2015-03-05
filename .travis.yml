@@ -1,16 +1,8 @@
 language: java
-notifications:
-  hipchat:
-    rooms:
-      secure: BRxyikZ3/l8yGg63JU/oa7YETcMUhcHXQHFf4EF7kdD4hSgqhmHHlCMjDFcx84rTTf1CrcpiKVJfn1LPFADKr3QMEaatx9nWCPs1iHbZBfRhUJPVaG/1kN0cVyU5vz0v2KY2hx5FTnoecvL6ihdhpnWoWPZZxfDGT7t6uhAElbg=
 deploy:
   provider: releases
   api_key:
-    secure: HWP5140Mig3cgoOhRmj7cMWcgGURQOdt7Toc9QJdxTlC6wsEt64sNpx6XBFLovm2RkF57aETpOHQOGlGvy77Pf5UNcGscpAxqg6uealEkiTcatQ+H6m+XjN+lQTViqOESx8Id3h+0Dfcr4pc8oKY2xtzruak/oTMJ37OqUr+qIo=
-  file: build/libs/unix-file-plugin-4.0.5.jar
-  skip_cleanup: true
+    secure: R6ZSdzbH6R0RBkv2aMXsPhSBoCv4746TE7jJVaJiyXVDQSbdIW4j0NTG4+lOVpoG2nA93cG42cj63aS2OPTGjWlAjIuVPTGGnUdJz0b28xwHgHipEG6G7ikkP5GpGSoy++ZKJFSOpjpXWkSt4LyB1CVzjASsiE+B8pBpDz9n1jI=
+  file: build/libs/unix-file-plugin-4.0.6.jar
   on:
-    all_branches: true
-    tags: true
     repo: xebialabs-community/xld-unix-file-plugin
-
