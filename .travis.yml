@@ -3,6 +3,6 @@ deploy:
   provider: releases
   api_key:
     secure: R6ZSdzbH6R0RBkv2aMXsPhSBoCv4746TE7jJVaJiyXVDQSbdIW4j0NTG4+lOVpoG2nA93cG42cj63aS2OPTGjWlAjIuVPTGGnUdJz0b28xwHgHipEG6G7ikkP5GpGSoy++ZKJFSOpjpXWkSt4LyB1CVzjASsiE+B8pBpDz9n1jI=
-  file: build/libs/unix-file-plugin-4.0.6.jar
+  file: build/libs/unix-file-plugin-4.0.7.jar
   on:
     repo: xebialabs-community/xld-unix-file-plugin
