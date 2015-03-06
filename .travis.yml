@@ -6,3 +6,4 @@ deploy:
   file: build/libs/unix-file-plugin-4.0.7.jar
   on:
     repo: xebialabs-community/xld-unix-file-plugin
+
