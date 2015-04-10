@@ -18,7 +18,19 @@ else
 fi
 
 echo Creating folder '${deployed.targetPath}'
-cp -r . "${deployed.targetPath}"
+for FILE_NAME in `find . -type f`; do
+    FILE_NAME=`echo $FILE_NAME | sed "s/^\.\///g"`
+    #echo "SRC = ${FILE_NAME} DEST = ${deployed.targetPath}/${FILE_NAME}"
+    if [ -e "${deployed.targetPath}/${FILE_NAME}" ];then
+         SCKSUM=`cat $FILE_NAME | cksum`
+         DCKSUM=`cat ${deployed.targetPath}/${FILE_NAME} | cksum`
+         if [ "$DCKSUM" != "$SCKSUM" ]; then
+            echo ${FILE_NAME} | cpio -pvdmB ${deployed.targetPath}
+         fi
+    else
+         echo ${FILE_NAME} | cpio -pvdmB ${deployed.targetPath}
+    fi
+done
 res=$?
 if [ $res != 0 ] ; then
   exit $res
