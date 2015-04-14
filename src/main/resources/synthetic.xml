@@ -36,6 +36,7 @@ FOR A PARTICULAR PURPOSE. THIS CODE AND INFORMATION ARE NOT SUPPORTED BY XEBIALA
       <!-- admin properties -->
       <property name="targetFileName" hidden="true" default="UNUSED" />
       <property name="createScript" hidden="true" default="file/create-unix-folder.sh.ftl" />
+      <property name="modifyScript" hidden="true" default="file/modify-unix-folder.sh.ftl" />
       <property name="destroyScript" hidden="true" default="file/destroy-unix-folder.sh.ftl" />
     </type>
 </synthetic>

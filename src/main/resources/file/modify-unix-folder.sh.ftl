@@ -18,7 +18,20 @@ else
 fi
 
 echo Creating folder '${deployed.targetPath}'
-cp -r . "${deployed.targetPath}"
+for FILE_NAME in `find . -type f`; do
+    FILE_NAME=`echo $FILE_NAME | sed "s/^\.\///g"`
+    if [ -e "${deployed.targetPath}/${r"${FILE_NAME}"}" ];then
+         SCKSUM=`cat $FILE_NAME | cksum`
+         DCKSUM=`cat ${deployed.targetPath}/${r"${FILE_NAME}"} | cksum`
+         if [ "$DCKSUM" != "$SCKSUM" ]; then
+            echo "Copy $FILE_NAME to ${deployed.targetPath} ( $SCKSUM / $DCKSUM )"
+            echo ${r"${FILE_NAME}"} | cpio -pdmB ${deployed.targetPath} 
+         fi
+    else
+         echo "Copy $FILE_NAME to ${deployed.targetPath}"
+         echo ${r"${FILE_NAME}"} | cpio -pdmB ${deployed.targetPath}
+    fi
+done
 res=$?
 if [ $res != 0 ] ; then
   exit $res
@@ -40,4 +53,3 @@ if [ $res != 0 ] ; then
   exit $res
 fi
 </#if>
-
