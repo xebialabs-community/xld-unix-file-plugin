@@ -17,7 +17,12 @@ else
   echo Target path '${deployed.targetPath}' already exists
 fi
 
-echo Creating folder '${deployed.targetPath}'
+for DIR_NAME in `find . -type d`;do
+    if [ ! -e "${deployed.targetPath}/${r"${DIR_NAME}"}" ];then
+         echo "Make subdirectory ${r"${DIR_NAME}"}"
+         mkdir -p ${deployed.targetPath}/${r"${DIR_NAME}"}
+    fi
+done
 for FILE_NAME in `find . -type f`; do
     FILE_NAME=`echo $FILE_NAME | sed "s/^\.\///g"`
     if [ -e "${deployed.targetPath}/${r"${FILE_NAME}"}" ];then
