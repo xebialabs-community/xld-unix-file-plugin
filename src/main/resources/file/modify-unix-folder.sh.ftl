@@ -17,8 +17,26 @@ else
   echo Target path '${deployed.targetPath}' already exists
 fi
 
-echo Creating folder '${deployed.targetPath}'
-cp -r . "${deployed.targetPath}"
+for DIR_NAME in `find . -type d`;do
+    if [ ! -e "${deployed.targetPath}/${r"${DIR_NAME}"}" ];then
+         echo "Make subdirectory ${r"${DIR_NAME}"}"
+         mkdir -p ${deployed.targetPath}/${r"${DIR_NAME}"}
+    fi
+done
+for FILE_NAME in `find . -type f`; do
+    FILE_NAME=`echo $FILE_NAME | sed "s/^\.\///g"`
+    if [ -e "${deployed.targetPath}/${r"${FILE_NAME}"}" ];then
+         SCKSUM=`cat $FILE_NAME | cksum`
+         DCKSUM=`cat ${deployed.targetPath}/${r"${FILE_NAME}"} | cksum`
+         if [ "$DCKSUM" != "$SCKSUM" ]; then
+            echo "Copy $FILE_NAME to ${deployed.targetPath} ( $SCKSUM / $DCKSUM )"
+            echo ${r"${FILE_NAME}"} | cpio -pdmB ${deployed.targetPath} 
+         fi
+    else
+         echo "Copy $FILE_NAME to ${deployed.targetPath}"
+         echo ${r"${FILE_NAME}"} | cpio -pdmB ${deployed.targetPath}
+    fi
+done
 res=$?
 if [ $res != 0 ] ; then
   exit $res
@@ -40,4 +58,3 @@ if [ $res != 0 ] ; then
   exit $res
 fi
 </#if>
-
