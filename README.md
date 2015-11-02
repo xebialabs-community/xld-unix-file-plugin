@@ -1,6 +1,6 @@
 ## Preface
 
-This document describes the functionality provided by the Unix File Plugin.
+This document describes the functionality provided by the Unix File Plugin (Adds ability to set unix permissions).
 
 Refer to the [XL Deploy Deploy Manual](https://docs.xebialabs.com/xl-deploy/how-to/deploy-an-application.html) for background information on XL Deploy and deployment concepts.
 
