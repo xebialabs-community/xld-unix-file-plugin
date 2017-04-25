@@ -10,7 +10,7 @@ THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EIT
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS
 FOR A PARTICULAR PURPOSE. THIS CODE AND INFORMATION ARE NOT SUPPORTED BY XEBIALABS.
 -->
-#!/bin/sh
+#!${deployed.shell}
 
 if [ ! -d "${deployed.targetPath}" ]; then
   echo Creating target path '${deployed.targetPath}'<#if deployed.createTargetPath> and parents</#if>

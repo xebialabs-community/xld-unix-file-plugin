@@ -1,3 +1,10 @@
+## Build Status
+[![Build Status](https://travis-ci.org/xebialabs-community/xld-unix-file-plugin.svg?branch=master)](https://travis-ci.org/xebialabs-community/xld-unix-file-plugin)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e06c8ae2b17a49678df7c5a6070f013b)](https://www.codacy.com/app/zvercodebender/xld-unix-file-plugin?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=xebialabs-community/xld-unix-file-plugin&amp;utm_campaign=Badge_Grade)
+[![Code Climate](https://codeclimate.com/github/zvercodebender/xld-unix-file-plugin/badges/gpa.svg)](https://codeclimate.com/github/zvercodebender/xld-unix-file-plugin)
+[![Github All Releases](https://img.shields.io/github/downloads/xebialabs-community/xld-unix-file-plugin/total.svg)](https://img.shields.io/github/downloads/xebialabs-community/xld-unix-file-plugin/total.svg)
+
+
 ## Preface
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/e06c8ae2b17a49678df7c5a6070f013b)](https://www.codacy.com/app/zvercodebender/xld-unix-file-plugin?utm_source=github.com&utm_medium=referral&utm_content=xebialabs-community/xld-unix-file-plugin&utm_campaign=badger)
