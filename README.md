@@ -7,6 +7,8 @@
 
 ## Preface
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e06c8ae2b17a49678df7c5a6070f013b)](https://www.codacy.com/app/zvercodebender/xld-unix-file-plugin?utm_source=github.com&utm_medium=referral&utm_content=xebialabs-community/xld-unix-file-plugin&utm_campaign=badger)
+
 This document describes the functionality provided by the Unix File Plugin (Adds ability to set unix permissions).
 
 Refer to the [XL Deploy Deploy Manual](https://docs.xebialabs.com/xl-deploy/how-to/deploy-an-application.html) for background information on XL Deploy and deployment concepts.
