@@ -1,3 +1,5 @@
 .gradle
 build
 *swp
+.idea
+.idea/vcs.xml

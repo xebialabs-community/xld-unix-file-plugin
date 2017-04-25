@@ -4,7 +4,7 @@ deploy:
   provider: releases
   api_key:
     secure: R6ZSdzbH6R0RBkv2aMXsPhSBoCv4746TE7jJVaJiyXVDQSbdIW4j0NTG4+lOVpoG2nA93cG42cj63aS2OPTGjWlAjIuVPTGGnUdJz0b28xwHgHipEG6G7ikkP5GpGSoy++ZKJFSOpjpXWkSt4LyB1CVzjASsiE+B8pBpDz9n1jI=
-  file: build/distributions/unix-file-plugin-5.0.0.xldp
+  file: build/distributions/xld-unix-file-plugin-5.0.0.xldp
   on:
     all_branches: true
     tags: true
