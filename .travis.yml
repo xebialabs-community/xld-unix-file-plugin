@@ -3,7 +3,7 @@ sudo: false
 deploy:
   provider: releases
   api_key:
-    secure: bJST/QUS/TI9BIYsJHrjSViElWZQyAoBtZx+O3uZErR2hK0usrNWkQLsveC/kIPyKrrlhaOY1sXY/+ulRGUyOqSD+5xONh8l2I7+3ev+RGCkpd2sj6p8W1hIbVPbsC9iQ8GJeH0jQjd8qlOkbJ/nLKTHD/LmNBWtAq51j3gsEXg=
+    secure: IqY8WZkwyOfJdSoduQmBWckzqywz3SyCTSCMD/Wgj8m2GTQ6jrC5RBD1YHzJA3AtnqZ/xJfij2/qgmrTtiJRQ0mbcl963v2+Wnq3j77wuws/2Pc1mfmA8+u4qEH3tm3lDFQc3664OqwHj2UIzhW5frpkrtBzeNytBUx007UAH2o=
   file: build/distributions/xld-unix-file-plugin-4.1.0.xldp
   on:
     all_branches: true
