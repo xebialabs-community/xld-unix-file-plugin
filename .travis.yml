@@ -10,6 +10,5 @@ deploy:
     tags: true
     repo: xebialabs-community/xld-unix-file-plugin
 notifications:
-  hipchat:
-    rooms:
-      secure: iV4Blo4W/Fsq5+x6+xii7+zdLTj2MX7inZlMbfNn6i6SnbEvDTQwJT5NUzkFPqGmpv70PGMssj3qSnHe0IGf5nSeqjcyt2VYDPRLV0YkULM0tXsLQGd6tXOUqOSHCFUkO48zQCWSyYsKXZr6FCxf4pKjTv69oorsQm4auJVKP/E=
+  slack:
+    secure: OQX+j5SGmZxQn2p8cEH1dbZ/xbxo984xJF+x+/Bzs26eC4DY2vZz+2ns2sFJvkgmViFI6Jlmf8hLbi69xZiCV0zjgKYbBVCK6DXV7FS0EzjL9HagCz+VY6ExTlG/OqLngzZJ82V8r3sxl3iir/KwcK9MBwd1o0iV9LRSRmA0Fg4=
