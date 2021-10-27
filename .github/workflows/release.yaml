@@ -21,4 +21,4 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
           files: |
-            ./build/libs/xld-unix-file-plugin-*.*
+            ./build/distributions/xld-unix-file-plugin-*.*
