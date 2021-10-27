@@ -1,52 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR
-    IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS
-    FOR A PARTICULAR PURPOSE. THIS CODE AND INFORMATION ARE NOT SUPPORTED BY XEBIALABS.
+Copyright 2021 DIGITAL.AI
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
--->
-<!--
-THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS
-FOR A PARTICULAR PURPOSE. THIS CODE AND INFORMATION ARE NOT SUPPORTED BY XEBIALABS.
 -->
 <synthetic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xmlns="http://www.xebialabs.com/deployit/synthetic"
            xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd">
 
-    <type type="file.CopiedUnixArtifact" extends="generic.ExecutedScriptWithDerivedArtifact" container-type="overthere.SshHost" virtual="true">
+    <type type="file.CopiedUnixArtifact" extends="udm.BaseDeployedArtifact" container-type="overthere.SshHost" virtual="true">
       <property name="shell" hidden="true" default="/bin/bash" />
       <!-- cannot define regex validation rules for integers -->
       <property name="permissions" required="false" description="If set, the UNIX file permissions to be applied to the artifact, e.g. 644">
-        <rule type="regex" pattern="[0-7]{3}"/>
+        <rule type="regex" pattern="[0-6]{3}"/>
       </property>
       <property name="targetPath" />
       <property name="createTargetPath" kind="boolean" required="false" default="false" />
-      <!-- admin properties -->
-      <property name="destroyVerb" hidden="true" default="Delete" />
     </type>
 
     <type type="file.CopiedUnixFile" extends="file.CopiedUnixArtifact" deployable-type="file.UnixFile">
-      <generate-deployable type="file.UnixFile" extends="file.File" />
+      <generate-deployable type="file.UnixFile" extends="udm.BaseDeployableFileArtifact" />
 
       <property name="shell" hidden="true" default="/bin/bash" />
       <property name="targetFileName" required="false" />
       <!-- admin properties -->
       <property name="targetPathShared" kind="boolean" required="false" hidden="true" default="false" />
-      <property name="createScript" hidden="true" default="file/create-unix-file.sh.ftl" />
-      <property name="destroyScript" hidden="true" default="file/destroy-unix-file.sh.ftl" />
     </type>
 
     <type type="file.CopiedUnixFolder" extends="file.CopiedUnixArtifact" deployable-type="file.UnixFolder">
-      <generate-deployable type="file.UnixFolder" extends="file.Folder" />
+      <generate-deployable type="file.UnixFolder" extends="udm.BaseDeployableFolderArtifact" />
 
       <property name="shell" hidden="true" default="/bin/bash" />
       <property name="targetPathShared" kind="boolean" required="false" default="true" />
       <!-- admin properties -->
       <property name="targetFileName" hidden="true" default="UNUSED" />
-      <property name="createScript" hidden="true" default="file/create-unix-folder.sh.ftl" />
-      <property name="modifyScript" hidden="true" default="file/modify-unix-folder.sh.ftl" />
-      <property name="destroyScript" hidden="true" default="file/destroy-unix-folder.sh.ftl" />
     </type>
 </synthetic>

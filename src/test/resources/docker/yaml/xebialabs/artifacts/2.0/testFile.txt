@@ -1,0 +1,6 @@
+File 2
+
+Hello {{key1}}
+
+This is a test {{key2}}
+

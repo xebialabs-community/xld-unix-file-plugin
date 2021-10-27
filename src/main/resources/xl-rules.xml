@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!--
+    Copyright 2021 DIGITAL.AI
+    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+    The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-->
+<rules xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.xebialabs.com/xl-deploy/xl-rules" >
+
+   <rule name="createUnixFile" scope="deployed">
+      <conditions>
+         <type>file.CopiedUnixFile</type>
+         <operation>CREATE</operation>
+         <operation>MODIFY</operation>
+      </conditions>
+      <steps>
+         <os-script>
+            <order>30</order>
+            <description expression="true">"Copy files to folder  %s" % deployed.targetPath</description>
+            <script>file/create-unix-file</script>
+            <target-host expression="true">deployed.container.host</target-host>
+         </os-script>
+      </steps>
+   </rule>
+   <rule name="deleteUnixFile" scope="deployed">
+      <conditions>
+         <type>file.CopiedUnixFile</type>
+         <operation>DESTROY</operation>
+      </conditions>
+      <steps>
+         <os-script>
+            <order>20</order>
+            <description expression="true">"Delete file %s" % previousDeployed.targetPath</description>
+            <script>file/destroy-unix-file</script>
+         </os-script>
+      </steps>
+   </rule>
+
+   <rule name="createUnixFolder" scope="deployed">
+      <conditions>
+         <type>file.CopiedUnixFolder</type>
+         <operation>CREATE</operation>
+      </conditions>
+      <steps>
+         <os-script>
+            <order>30</order>
+            <description expression="true">"Copy folder %s" % deployed.targetPath</description>
+            <script>file/create-unix-folder</script>
+         </os-script>
+      </steps>
+   </rule>
+   <rule name="destroyUnixFolder" scope="deployed">
+      <conditions>
+         <type>file.CopiedUnixFolder</type>
+         <operation>DESTROY</operation>
+      </conditions>
+      <steps>
+         <os-script>
+            <order>20</order>
+            <description expression="true">"Delete files from folder  %s" % previousDeployed.targetPath</description>
+            <script>file/destroy-unix-folder</script>
+         </os-script>
+      </steps>
+   </rule>
+   <rule name="modifyUnixFolder" scope="deployed">
+      <conditions>
+         <type>file.CopiedUnixFolder</type>
+         <operation>MODIFY</operation>
+      </conditions>
+      <steps>
+         <os-script>
+            <order>35</order>
+            <description expression="true">"Change files in folder  %s" % deployed.targetPath</description>
+            <script>file/modify-unix-folder</script>
+         </os-script>
+      </steps>
+   </rule>
+
+</rules>
